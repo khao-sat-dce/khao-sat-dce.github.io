@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Khảo sát DCE</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center"><i class="fas fa-poll"></i> Chào mừng bạn đến với khảo sát!</h1>
+        <p class="text-center">Khảo sát này nhằm đánh giá sở thích của người tiêu dùng về sản phẩm chăm sóc da chứa hoạt chất trị mụn tại các nhà thuốc trên địa bàn Thành phố Hồ Chí Minh năm 2025. Các thông tin bạn cung cấp sẽ hoàn toàn bảo mật và chỉ phục vụ cho nghiên cứu. </p>
+        
+        <h2><i class="fas fa-info-circle"></i> Hướng dẫn thực hiện khảo sát</h2>
+        <ul>
+            <li>Bạn sẽ nhìn thấy các tình huống giả định mua một sản phẩm chăm sóc da chứa hoạt chất trị mụn tại nhà thuốc với các thuộc tính (đặc điểm) khác nhau.</li>
+            <li>Hãy chọn sản phẩm mà bạn ưu tiên mua nhất trong mỗi tình huống.</li>
+            <li>Nếu không muốn mua bất kỳ sản phẩm nào, bạn có thể chọn "Không chọn sản phẩm nào".</li>
+            <li>Không có câu trả lời đúng hay sai, hãy chọn theo cảm nhận thực tế của bạn.</li>
+        </ul>
+
+        <h3><i class="fas fa-list-ul"></i> Giải thích các thuộc tính sản phẩm</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Thuộc tính</th>
+                    <th>Mô tả</th>
+                    <th>Mức độ thuộc tính</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Xuất xứ</td>
+                    <td>Quốc gia sản xuất hoặc thương hiệu của sản phẩm</td>
+                    <td>
+                    Hàn Quốc<br>
+                    Mỹ<br>
+                    Nhật Bản<br>
+                    Pháp
+                    </td>
+                </tr>
+                <tr>
+                    <td>Hoạt chất chính</td>
+                    <td>Thành phần có tác dụng điều trị mụn trong sản phẩm</td>
+                    <td>
+                    AHA<br>
+                    BHA<br>
+                    Azelaic acid<br>
+                    Retinol
+                    </td>
+                </tr>
+                <tr>
+                    <td>Giá cả</td>
+                    <td>Khoảng giá của sản phẩm</td>
+                    <td>
+                    100.000 – 300.000 VNĐ<br>
+                    300.000 – 500.000 VNĐ<br>
+                    500.000 – 700.000 VNĐ
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cảm giác/Biểu hiện trên da</td>
+                    <td>Mức độ dung nạp và nguy cơ kích ứng khi sử dụng</td>
+                    <td>
+                    Hơi đỏ da thoáng qua<br>
+                    Châm chích nhẹ, nóng rát thoáng qua<br>
+                    Hơi khô căng, có thể bong tróc nhẹ<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Dạng bào chế</td>
+                    <td>Hình thức vật lý của sản phẩm</td>
+                    <td>
+                    Kem<br>
+                    Gel<br>
+                    Lotion<br> 
+                    Serum
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="text-center"><i class="fas fa-clock"></i> Bắt đầu khảo sát sau:</h3>
+        <p class="text-center" id="countdown"></p>
+        <div class="text-center">
+            <button id="startSurvey" class="btn btn-primary" disabled><i class="fas fa-play-circle"></i> Bắt đầu khảo sát</button>
+        </div>
+    </div>
+    
+    <script>
+        $(document).ready(function() {
+            let timeLeft = 30;
+            let countdownTimer = setInterval(function() {
+                if (timeLeft <= 0) {
+                    clearInterval(countdownTimer);
+                    $("#startSurvey").prop("disabled", false);
+                    $("#countdown").text("Bạn có thể bắt đầu khảo sát ngay bây giờ.");
+                } else {
+                    $("#countdown").text("Vui lòng chờ " + timeLeft + " giây để bắt đầu khảo sát.");
+                }
+                timeLeft -= 1;
+            }, 1000);
+
+            $("#startSurvey").click(function() {
+                let links = ["https://forms.gle/cbLGV9KosVVf5GCg8", "https://forms.gle/ZM8MP5JG7MiEQmGP9"];
+                let randomLink = links[Math.floor(Math.random() * links.length)];
+                window.location.href = randomLink;
+            });
+        });
+    </script>
+</body>
+</html>
